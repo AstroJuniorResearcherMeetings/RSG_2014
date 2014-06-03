@@ -1,0 +1,129 @@
+
+Levels are rough but give you an idea of the complexity
+
+
+###########
+Basic Level
+###########
+
+FILE SYSTEM NAVIGATION
+======================
+
+* What command you type in to move into a directory called "Documents"? Then move back?
+
+* What command would you type to move to your home directory?
+
+* What are three ways to get help for a command?
+
+* What does "ls -haltr" do? How would you make an alias for it?
+
+FILE MANIPULATION
+=================
+
+Run:  echo -e "System PATH as of `date` \n $PATH" > find_command_path.txt
+
+* What are two ways to view the contents of "find_command_path.txt"?
+
+* How do you create a directory? Create a directory called "PathData".
+
+* Copy "find_command_path.txt" to "PathData" and rename it "path.txt"
+
+* How would you rename "PathData" to "MySystemPathData"?
+
+* How would you search for all files that end in *.txt? Did you find "path.txt"?
+
+* How would you delete "MySystemPathData" and all it's contents?
+
+
+ETC
+===
+
+* How do you create an alias for a command?
+
+
+##################
+Intermediate Level
+##################
+
+
+Download a zipped file from git (or git clone) using:
+
+wget https://github.com/AstroJuniorResearcherMeetings/RSG_2014/archive/master.zip
+
+
+
+FILE MANIPULATION
+=================
+
+* Decompress (unzip) the file from the git hub. 
+
+* How would you create a file which contains all ".txt" files that begin with "data" in the current directory? (hint: ls and |)
+
+* How would you create the same file but with all files of the form "data_00.fits"?
+
+
+ENVIRONMENT VARIABLES
+=====================
+
+* What is PATH? Use echo to display and copy it here.
+
+* How would you add a path to environment variable PATH?
+
+* What kind of shell are you working in? (Bash or Tcsh?)
+
+* Copy the appropriate startup script to your home directory. 
+Open a new shell (i.e. source the file). Try to run `matrix`. 
+
+* From the git hub download find a file called whereami. Look at it. Add that directory to your PATH.
+
+REMOTE SERVERS/FILE SYSTEMS
+===========================
+
+For the following if you have a user account at CHPC or PHYSICS try doing them.
+one CHPC server:
+astro03.astro.utah.edu
+
+one Physics server:
+physics.utah.edu
+
+* What command would you use to login to a server (hostname) called "physics.utah.edu"? 
+
+* What command would you use to copy a file (like "find_command_path.txt") to "physics.utah.edu" if your username is "dave"?
+
+* What command would you use to copy a directory (like "PathData") from "physics.utah.edu" if your username is "dave"?
+
+
+##############
+Advanced Level 
+##############
+
+
+* How would you turn a directory "PathData" into a tarball (using pathdata.tar)?
+
+* How would you also compress the tarball? (think gzip/zip)
+
+
+* Create a script which moves you to the home directory and execute.
+
+* Add the script to your $PATH so you can type it anywhere.
+
+
+-- Create a file called "two_second_tom.sh" with:
+#!/bin/csh
+while true
+do 
+    echo "Hi, my name is Tom"
+    sleep 2
+done
+
+* Run `screen` and execute the script "two_second_tom.sh". Then exit out of the screen. 
+Resume the screen to see that the command is still running. Kill the command with ctrl-k and exit the screen.
+
+
+REMOTE SERVERS/FILE SYSTEMS
+===========================
+
+
+* How would you sync the directory "PathData" to your username at "physics.utah.edu" (if set up)? 
+
+* How would you exclude a directory called "LargeData" from syncing?

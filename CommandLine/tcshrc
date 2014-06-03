@@ -1,0 +1,123 @@
+#!/bin/tcsh
+# Set custom PATHS, aliases, etc.
+
+echo "Thank you for opening a new terminal!"
+
+# ---------------------------------------------------------------------------- #
+# Add to PATH - How you add more commands to the command line
+# ---------------------------------------------------------------------------- #
+# setenv PATH "/usr/local/bin:${PATH}"
+
+# ---------------------------------------------------------------------------- #
+# Environment Variables
+# ---------------------------------------------------------------------------- #
+# Default Editor
+setenv EDITOR 'emacs -nw'
+
+# set a default location
+setenv DEFAULT_LOCATION ${HOME}
+
+# ---------------------------------------------------------------------------- #
+# Move To Default location
+# ---------------------------------------------------------------------------- #
+if (${PWD} == ${HOME}'/Desktop') then 
+    cd ${DEFAULT_LOCATION}
+endif
+
+# ---------------------------------------------------------------------------- #
+# Set PROMPT - modify the command prompt with colors
+# ---------------------------------------------------------------------------- #
+# source ~/.prompt_tcsh # Could put the this section into it's own script
+# 
+# %/  shows entire path
+# %C shows relative directory
+# %~ current working directory replacing user's path with ~
+# for more see http://www.nparikh.org/unix/prompt.php
+set BLACK = "%b%{\033[30m%}"
+set BLUE  = "%b%{\033[34m%}"
+set GREEN  = "%b%{\033[32m%}"
+set CYAN  = "%b%{\033[36m%}"
+set RED  = "%b%{\033[31m%}"
+set MAGENTA  = "%b%{\033[35m%}"
+set PURPLE  = "%b%{\033[35m%}"
+set YELLOW  = "%b%{\033[33m%}"
+set LIGHT_GRAY  = "%%b{\033[37m%}"
+set BOLD_BLUE  = "%{\033[34m%}%B"
+set BOLD_GREEN  = "%{\033[32m%}%B"
+set BOLD_CYAN  = "%{\033[36m%}%B"
+set BOLD_RED  = "%{\033[31m%}%B"
+set BOLD_PURPLE  = "%{\033[35m%}%B"
+set BOLD_WHITE = "%{\033[37m%}%B"
+set WHITE = "%b%{\033[37m%}"
+set RESET  = "%b%{\033[m%}"
+
+set prompt="${GREEN}[${BOLD_GREEN}%~${GREEN}\] ${LIGHT_GRAY}"
+
+
+# ---------------------------------------------------------------------------- #
+# Modify Builtin Commands
+# ---------------------------------------------------------------------------- #
+alias ls 'ls -G' # enable colors
+alias cp 'cp -i' # interactive, so you don't accidentally overwrite existing files
+alias mv 'mv -i'
+alias rm 'rm -i' # use rm -f if you want to force removal
+alias srm 'srm -i'
+alias du 'du -csh'
+
+# ---------------------------------------------------------------------------- #
+# Connivence Aliases
+# ---------------------------------------------------------------------------- #
+alias remove 'rm -rf'
+alias lsl 'ls -haltr' #-halter  the `-e` is part of the `-l`
+alias lss 'ls -hsl'
+alias resource 'source ~/.tcshrc'
+
+# for finder
+# alias finder 'open .' # open current directory in finder on MacOSX
+
+# for information about chmod
+alias chmodinfo 'echo -e "chmod information:\n 7 = full (111) \n 6 = read/write (110)\n 5 = read/exec (101)\n 4 = read (100)\n 3 = write/exec (011)\n 2 = write (010)\n 1 = exec (001)\n 0 = none (000)\n \n SHELL$ chmod 754 foo.txt\n  ^= gives user (u) full, group (g) read/exec,  and  others (o) read only"'
+
+# Location Shortcuts
+# alias cda "cd ${ASTROHOME}"
+
+# ---------------------------------------------------------------------------- #
+# Application Aliases
+# ---------------------------------------------------------------------------- #
+
+# Terminals
+alias xterm 'xterm -fa Monaco -fs 9.5 -fg white -bg black'
+
+# Python aliases
+alias py 'python'
+alias ipy 'ipython'
+
+# Text Editors
+alias em "emacs"
+
+
+# ---------------------------------------------------------------------------- #
+# Aliases for network connections
+# ---------------------------------------------------------------------------- #
+alias astro03 'ssh -Y u0565532@astro03.astro.utah.edu'
+# also check out ~/.ssh/config
+
+# reconnecting to the UConnect WiFi
+# alias reconnect_uconnect "networksetup -setairportnetwork en1 UConnect" # on MacOSX
+
+# for syncing astronomy directories
+# alias astrosync "/Applications/astro/rsync_script.py"
+
+
+# ---------------------------------------------------------------------------- #
+# Research Specific Aliases
+# ---------------------------------------------------------------------------- #
+
+# ---------------------------------------------------------------------------- #
+# Misc Aliases
+# ---------------------------------------------------------------------------- #
+alias y 'echo YES!'
+alias n 'echo NO!'
+alias textwars 'telnet towel.blinkenlights.nl'
+alias matrix 'LC_ALL=C tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
+

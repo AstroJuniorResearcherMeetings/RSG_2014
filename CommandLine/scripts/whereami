@@ -1,0 +1,13 @@
+#!/bin/sh
+# Simple script which just displays (using echo) information to the screen
+echo "What is your name?"
+# set NAME="$<" # for csh/tcsh
+read NAME # for bash
+echo "Hello, $NAME."
+echo " "
+echo "You're logged into:"
+echo "`whoami`@`hostname`"
+echo " "
+echo "Present Working Directory:"
+echo "${PWD}"
+

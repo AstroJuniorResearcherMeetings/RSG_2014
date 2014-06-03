@@ -1,0 +1,37 @@
+This is just a basic guide for Emacs and Vi command line editors. If you do not know either vi or emacs I would recommend learning emacs because it is more intuitive. 
+
+## emacs ## 
+From the command line you can edit a file using:
+emacs file.txt 
+
+You can navigate with the arrows and insert text. To save use the commands Ctrl-x Ctrl-s. After use Ctrl-x Ctrl-c to exit. 
+
+Other basic commands:
+Ctrl-a : go to start of line
+Ctrl-e : go to end of line
+Ctrl-k : kill/cut the rest of the line
+Ctrl-w : kill/cut the current selection
+Ctrl-y : Yank/paste any killed/cut stuff
+
+Many more commands exist, here's one resource:
+http://doors.stanford.edu/~sr/computing/emacs.html
+
+Also I recommend a Graphical User Interface (GUI) to emacs, such as:
+http://www.gnu.org/software/emacs/
+
+
+## vi ##
+Vi is a precursor to emacs, can be faster but requires more commands.
+vi file.txt
+
+Type `i` to get to -- Insert -- mode and edit the text. Press `esc` to get to the vi command line, type :w to save, :q to quit, :q! to quit without saving
+
+Many more commands exist, here's one resource: 
+http://www.lagmonster.org/docs/vi.html
+
+And a gui's do exist but vi is strongest on the command line (most cases emacs is better, you can try to convince me otherwise but I doubt you can http://en.wikipedia.org/wiki/Editor_war):
+http://gvim.en.softonic.com/
+
+
+
+

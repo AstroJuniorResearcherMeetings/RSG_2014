@@ -1,0 +1,118 @@
+Below is a shortened list of Unix Commands (from http://ss64.com/bash/)
+Those commands with stars are important to know.
+
+
+a
+* alias    Create an alias •
+  apropos  Search Help manual pages (man -k)
+  awk      Find and Replace text, database sort/validate/index
+b
+  basename Strip directory and suffix from filenames
+  bash     GNU Bourne-Again SHell 
+  bg       Send to background
+c
+  cal      Display a calendar
+  cat      Concatenate and print (display) the content of files
+* cd       Change Directory (cd ; cd .. ; cd /root/ )
+* chmod    Change access permissions
+  chown    Change file owner and group
+  clear    Clear terminal screen
+  cmp      Compare two files
+* cp       Copy one or more files to another location
+d
+  date     Display or change the date & time
+  diff     Display the differences between two files
+  du       Estimate file space usage (du -csh)
+e
+  echo     Display message on screen •
+  env      Environment variables (list all `env | less`)
+* exit     Exit the shell
+* export   Set an environment variable (in BASH shell  `export HELLO="WORLD"`)
+  emacs    Text editor
+f
+  fg       Send job to foreground 
+  file     Determine file type
+* find     Search for files that meet a desired criteria (`find . -name *.pdf`)
+  free     Display memory usage
+g
+* grep     Search file(s) for lines that match a given pattern (`grep hello *txt`)
+* gzip     Compress given file(s)
+* gunzip   Decompress gzipped file(s)
+h
+  head     Output the first part of file(s)
+  help     Display help for a built-in command •
+  history  Command History
+  hostname Print or set system name
+i
+j
+  jobs     List active jobs •
+k
+  kill     Stop a process from running
+l
+  less     Display output one screen at a time (like `more` only hides text once finished)
+  ln       Create a symbolic link to a file (`ln -s /directory/somewhere/else .`)
+* ls       List information about file(s) (`ls -harlt`)
+m
+* man      Help manual (`man man`)
+* mkdir    Create new directories/folder(s)
+* more     Display output one screen at a time (like less only keeps the text displayed)
+* mv       Move or rename files or directories
+n
+o
+p
+  ps       Process status (`ps -e` list all)
+* pwd      Print Working Directory
+q
+r
+* rm       Remove files (`rm -i` for interactive; `rm -f` forces removal even if interactive)
+  rmdir    Remove folder(s)
+  rsync    Remote file copy (Synchronize file trees)
+s
+  screen   Multiplex terminal, run remote shells via ssh 
+* scp      Secure copy (remote file copy) (`scp -rp <whoami>@<hostname>:~/location/file1.txt ./file1.txt`)
+  sed      Stream Editor
+* setenv   Set Environment variables for TCSH
+  set      Manipulate shell variables and functions
+  sftp     Secure File Transfer Program
+  sort     Sort text files and output (`ps -eo %mem,%cpu,pid,user,cmd | sort -nk 1`)
+  source   Run commands from a file '.'
+* ssh      Secure Shell client (remote login program) like sftp
+  sudo     Execute a command as another user
+t
+  tail     Output the last part of file
+* tar      Store, list or extract files in an archive (extract: `tar -xvf`  create: `tar -cvf directory1.tar directory1`)
+  touch    Change file timestamps (also create file `touch hello.txt`)
+  top      List processes running on the system
+  type     Describe a command •
+u
+  unalias  Remove an alias •
+  users    List users currently logged in 
+  unzip    Decompress (archive) files.
+v
+  vi       Text Editor
+w
+  wc       Print byte, word, and line counts
+  whereis  Search the user's $path, man pages and source files for a program
+* which    Search the user's $path for a program file
+  who      Print all usernames currently logged in
+  whoami   Print the current user id and name (`id -un')
+  wget     Retrieve web pages or files via HTTP, HTTPS or FTP
+  write    Send a message to another user 
+xyz
+  xargs    Execute utility, passing constructed argument list(s)
+  zip      Package and compress (archive) files.
+  ###      Comment / Remark
+  
+    
+Ctrl-a : Go to beginning of line
+Ctrl-e : Go to end of line
+Ctrl-c : crash current running command
+Ctrl-k : cut line from current position to end (you can later paste)
+
+
+Basic structure
+command --flags --flags [flag_argument] [argument1] [argument2]...
+
+
+
+  
