@@ -4,6 +4,12 @@ This has been redesigned to be a walkthrough (like you may find for final fantas
 Skip over sections which have commands you feel comfortable with (though this may break the 'walkthrough'-ness of it). 
 
 
+* If you need more help try:
+http://www.ee.surrey.ac.uk/Teaching/Unix/
+http://linuxcommand.org/learning_the_shell.php
+
+
+
 >>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
 These are designed to help you figure out where you are. 
 
