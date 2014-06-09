@@ -1,83 +1,237 @@
 
-Levels are rough but give you an idea of the complexity
+This has been redesigned to be a walkthrough (like you may find for final fantasy ;) Each step should progress to help you understand the linux/unix command line. 
+
+Skip over sections which have commands you feel comfortable with (though this may break the 'walkthrough'-ness of it). 
 
 
-###########
-Basic Level
-###########
+>>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
+These are designed to help you figure out where you are. 
 
-FILE SYSTEM NAVIGATION
-======================
 
-* What command you type in to move into a directory called "Documents"? Then move back?
+##############
+1. Basic Level
+###############
 
-* What command would you type to move to your home directory?
+1.1 FILE SYSTEM NAVIGATION (cd,ls,pwd,man,echo,alias,-flags,*wildca?ds)
+=======================================================================
+
+* Type `cd` then `pwd`. You are in your home directory (denoted ~ for a shortcut). What's in your home directory (`ls`)?
+
+* Type `ls ..` to see what's in the containing directory?
+
+* Type `cd Desktop`. Where are you now (`pwd`)? and what's in this ~/Desktop directory?
+
+* Type `ls ../`. Where are you looking now? (You can try `cd ..` then `ls` as well, make sure you go back to Desktop to stay in this walkthrough).
+
+* Type `echo "hello" > new_file.txt` (which is currently just some magic). View what's in ~/Desktop now. You should see a file called "new_file.txt"
+
+* View details about this new file with the -l flag (`ls -l`) . When was it last modified?
+
+* Type `man ls` and look for the `-t` flag. What does it do? Try typing `ls -lt` and `ls -t -l` do you get the same thing?
 
 * What are three ways to get help for a command?
 
-* What does "ls -haltr" do? How would you make an alias for it?
+* What does `ls -haltr` do? 
 
-FILE MANIPULATION
-=================
+* Type `echo $SHELL` What kind of terminal are you in? (either tcsh or bash) (`echo` prints to the screen, `$SHELL` is a variable)
 
-Run:  echo -e "System PATH as of `date` \n $PATH" > find_command_path.txt
+* Create an alias for `ls -haltr` using `alias lsl='ls -haltr'` for bash or `alias lsl 'ls -haltr'` for tcsh.
 
-* What are two ways to view the contents of "find_command_path.txt"?
+* Type `echo -e "System PATH: $PATH" > ~/Desktop/find_command_path.txt`. (aka more magic). Type `lsl`. Does this new file appear as the most recent modified (before "new_file.txt")?
 
-* How do you create a directory? Create a directory called "PathData".
+* Type `which lsl`. What does it tell you? Type `which ls`, `which cp`, `which whoami`,...
 
-* Copy "find_command_path.txt" to "PathData" and rename it "path.txt"
+* To view only the two files ending in ".txt" use a wildcard and type `ls *.txt` (aka anything ending in .txt)
 
-* How would you rename "PathData" to "MySystemPathData"?
-
-* How would you search for all files that end in *.txt? Did you find "path.txt"?
-
-* How would you delete "MySystemPathData" and all it's contents?
+* Type `ls ???_*.txt` to view everything that starts with three characters then an underscore _ then anything but it must end in '.txt'. Note: wildcards can be used in all commands like `ls`,`cp`,`mv`, and `rm` which are about to be introduced)
 
 
-ETC
-===
+1.2 FILE MANIPULATION (more,less,mkdir,cp,mv,rm)
+===============================================
 
-* How do you create an alias for a command?
+* Type `more new_file.txt` to view the contents. What does it say? 
+
+* Type `man less` (or use the internet) what does the `less` command do? How is it different from `more`?
+
+* Now make a directory by typing `mkdir NewDirectory`. Type `ls` to see that this has been created and `ls NewDirectory` to see if any files are in it.
+
+* Type `cp new_file.txt NewDirectory/` to copy the file into your new directory.
+
+* Type `cp new_file.txt NewDirectory/newnew_file.txt` to copy the file into your new directory and rename it.
+
+* Type `less NewDirectory/newnew_file.txt`. What does it say?
+
+* Copy all the text files into NewDirectory by typing `ls *.txt NewDirectory/`. Confirm with `ls` that they are indeed there.
+
+* Try to copy the directory with `cp NewDirectory NewNewDirectory`. What error do you get? Type `man cp`, look for the `-r` flag. Now modify the command to actually copy the directory. 
+
+* Type `mv find_command_path.txt NewNewDirectory/path.txt` to move the file to this new directory and rename it to "path.txt".
+
+* Type `cd NewNewDirectory` then `mv path.txt System\ Path.txt` to rename "path.txt" to "System Path.txt" (note the space). 
+
+* Type `cd ../..` to move "up" two directories. Where are you (`pwd`)? Move into the Desktop directory using `cd`.
+
+* Type `mv NewNewDirectory SomewhatNewDirectory` to move the directory. Did this work?
+
+* Type `ls`, is "new_file.txt" still in your ~/Desktop? Type `rm new_file.txt` to remove it.
+
+WARNING: There is no Trash bin or undo for `rm`. When you use `rm` you better be sure you want the results gone. A good practice is to use `ls` first. If all these files are ones you want to remove, then use `rm`.
+
+* Type `which rm`? Is it aliased to `rm -i`? What does the `-i` flag do?
+
+* Type `ls NewDirectory/*path*`. What files does this want to remove? Type `rm -f NewDirectory/*path*` to remove them (what does `-f` do?).
+
+* Type `rm NewDirectory`, what error do you get? Take a lesson from `cp`, how to you recursively remove the directory?
+
+* Type `mv SomewhatNewDirectory ResearchDir`. What did this do?
+
+* You may force remove "ResearchDir" and all its contents like you did to NewDirectory. 
+
+>>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
+
+By now you should be comfortable navigating using the commands `cd` to move, `ls` to view contents, and `pwd` to see current location. Also understand how flags are used to modify the results of commands and how to use `alias` to set an aliased command.
+
+You should understand how to view the contents of a file quickly with `less` and `more`. You should be able to make directories (`mkdir`). And copy `cp`, move/rename `mv` and remove `rm` files.
 
 
-##################
-Intermediate Level
-##################
+####################
+2. Intermediate Level
+####################
+
+This website contains a repository of data being used for these Research Support Group meetings. 
+
+https://github.com/AstroJuniorResearcherMeetings/RSG_2014
+
+* Download the material
+    
+    * Method 1: Open a browser, got to the website, click on the "download zip" button. Then open a terminal. Type `cd ~/Downloads`, a new file ending in .zip should be there. Type `unzip RSG_2014-master.zip` to decompress the data.
+    
+    * Method 2: Type `cd ~/Downloads` (or where-ever you want the data). Then type `wget https://github.com/AstroJuniorResearcherMeetings/RSG_2014/archive/master.zip` Do download using the command wget. Type `unzip master.zip` to decompress the data.
+    
+    * Method 3: Type `cd ~/Downloads` (or where-ever you want the data. Then type `git clone https://github.com/AstroJuniorResearcherMeetings/RSG_2014/` to use the version tracking software `git` to download the repository of data into a new directory called "RSG_2014".
 
 
-Download a zipped file from git (or git clone) using:
+* Type `cd RSG_2014` or `cd RSG_2014-master` (depending). You should see (using `ls`) a directory called "CommandLine" move into that directory
 
-wget https://github.com/AstroJuniorResearcherMeetings/RSG_2014/archive/master.zip
+* Type `gunzip sandbox.tar.gz` to decompress (aka unzip) the file (gzip/zip and gunzip/unzip are practically the same). Then the file should be a tarball "sandbox.tar", unpack that using `tar -xvf sandbox.tar` (-xvf is something to memorize or alias for unpacking. Incidentally, -cvf creates a tarball)
+
+2.1 NAVIGATION + SEARCHING (find,grep,std redirection)
+=====================================================
+
+* Type `find . -name "*.txt"` to search for all files ending in ".txt". 
+
+* Find works as `find <starting location> <-flags (like -name)> <arguments>`. What does `find ~ -name "README*"` do? You can cancel this command from running (kill it) using Ctrl-c.
+
+You can redirect the output of this previous command using `|,>` characters. The pipe (`|`) redirects the output to another command. The greater than (`>`) redirects the output into a new file.
+
+* Type `find ~ -name "README*" | more`. This pipes the output of the `find` command into `more` which helps us walk through the output
+
+* Type `find ~ -name "README*" > find_readme.txt`. This redirects the output of the `find` command into `more` which helps us walk through the output
+
+* In "RSG_2014/CommandLine" type `ls *.txt > filelist`. To create a file with all the files ending in "*.txt" in it. View the contents of "filelist".
+
+*  type `grep "prompt" *`. The output should tell you all the files which have the string "prompt" and the text where that appears.
+
+* Type `grep "prompt" *` again but this time add something which re-directs the output to a new file (just like for `find`).
+
+* Type `grep "set prompt" *` to be more specific. Is tcshrc one of the files?
+
+>>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
+You should now know `find` for searching for files, `grep` for searching the contents of files, and some basic redirection of output. 
 
 
 
-FILE MANIPULATION
-=================
+2.2 STARTUP FILES (source,bashrc/tcshrc)
+========================================================================
 
-* Decompress (unzip) the file from the git hub. 
+* Find out what terminal shell you're in (`echo $SHELL`), either tcsh or bash.
 
-* How would you create a file which contains all ".txt" files that begin with "data" in the current directory? (hint: ls and |)
+Each kind of shell has particular files that are run when a new terminal shell is created. For tcsh that file is called tcshrc  (rc for run commands). Type `ls ~/.tcshrc`, does it exist? If so this file is run every time you create a new terminal. You should add aliases (e.g `alias lsl="ls -haltr"`) to this file so that you can access them in every terminal you use. 
 
-* How would you create the same file but with all files of the form "data_00.fits"?
+Note: I'm going to do this for tcsh but just change tcshrc to bashrc for bash shell.
+
+* If `ls ~/.tcshrc` exists, then look at the contents. Also look at the contents of "RSG_2014/CommandLine/tcshrc". 
 
 
-ENVIRONMENT VARIABLES
-=====================
+* Go to "RSG_2014/CommandLine", Try typing `matrix` into the command line. Does anything happen.
 
-* What is PATH? Use echo to display and copy it here.
+* Now type `source tcshrc`. This runs the commands in that file and puts them in the current shell. Try typing `matrix`. What happens? Type Ctrl-c to kill the running program.
 
-* How would you add a path to environment variable PATH?
+* Create a new terminal. Type `matrix` what happens? It should say command not found because the contents of "RSG_2014/CommandLine/tcshrc" have not been sourced. If you `source RSG_2014/CommandLine/tcshrc` you should be able to get that command to work.
 
-* What kind of shell are you working in? (Bash or Tcsh?)
+* So that you would have the (necessary!, jk) command `matrix` for every new terminal you could `cp -i ~/Downloads/RSG_2014/CommandLine/tcshrc ~/.tcshrc` if ~/.tcshrc exists do you want to overwrite it (I don't actually know, ask if you're also unclear).
 
-* Copy the appropriate startup script to your home directory. 
-Open a new shell (i.e. source the file). Try to run `matrix`. 
+* If you did move tcshrc to a ~/.tcshrc, open a new terminal (some text should appear "Thank you for opening a new terminal" which is in this version of tcshrc. Type `matrix` and you should enter the matrix (type Ctrl-c to kill).
 
-* From the git hub download find a file called whereami. Look at it. Add that directory to your PATH.
 
-REMOTE SERVERS/FILE SYSTEMS
-===========================
+* NOTE: Type `cd ~` or `cd` to go to your home directory. Type `ls`, do you see ".tcshrc"? Probably not because it's a hidden file (because of the ".") in front. Type `ls -a` to view this file
+
+
+>>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
+You should now understand that a new shell sources a startup file either called .tcshrc or .bashrc depending. Understand you can modify this file and ever new terminal will reflect the results.
+
+
+
+2.3 ENVIRONMENT VARIABLES (setenv/export,$PATH)
+===============================================
+
+The command line has some environment variables which define parameters of you current terminal shell environment. For example, I've used PATH and SHELL environment variables already. SHELL contains a string of what shell you're using (Type `echo $SHELL` should be /bin/tcsh or /bin/bash).
+
+PATH defines where commands are. When you typ `ls` the terminal needs to know what that means. What it does is look at the directories specified in PATH for something called `ls`. If you type `which ls` it will show you which is finds. Type `echo $PATH` and you should see the directory (/bin) which `ls` is in. 
+
+The terminal delimitates based on the ":", e.g.->
+
+PATH= /home/grad/dsg/documents/RSG_2014/CommandLine/scripts:/bin:/usr/bin:/local/bin:/usr/local/bin
+
+If I type `ls` (or `which` or any other) The terminal shell will first look in
+/home/grad/dsg/documents/RSG_2014/CommandLine/scripts 
+  Then
+      /bin
+            then
+                  /usr/bin
+                            and so on until it finds the command or doesn't.
+
+
+Many other programs use similar methods (e.g. PYTHONPATH, IDL_PATH)
+
+* Type `echo $PATH`, what is your current command path? Try typing `echo ${PATH}`, this should give you the same output.
+
+
+* Go to "RSG_2014", create your own environment variable. Type `echo $PWD` and then `pwd`, these should give you the same output. Type:
+tcsh->
+Type `setenv RSG_HOME=${PWD}`
+
+bash->
+Type `export RSG_HOME=${PWD}`
+
+* Now type `cd`, then `echo ${PWD}` then `echo $RSG_HOME`. RSG_HOME should be a stored value and PWD should have changed. Type `cd -` to go back to where you were.
+
+* Now add to your path. Before you do try typing `whereami`, what happens?
+bash->
+Type `export PATH="${RSG_HOME}/CommandLine/scripts:$PATH"`
+
+tcsh->
+type `setenv PATH "${RSG_HOME}/CommandLine/scripts:$PATH"`
+
+* Now type `whereami`, what happens? Type `which whereami` to see where that command lives.
+
+
+
+>>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
+You should understand environment variables exist. They can be modified using export (bash) or setenv (tcsh) to tell your programs/terminal where to look for items. NOTE: You can add path modifications to your startup scripts so that they are there every time.
+                        
+ 
+ 
+################
+3 Advanced Level 
+################
+
+This is going to be faster, if you need help, ask your friends or the internet.
+ 
+3.1 REMOTE SHELLS (hostname,whoami,ssh,scp,rsync)
+=================================================
+ 
+Sometimes you want to connect to a remote server (e.g. physics.utah.edu or chpc.utah.edu) Where files are stored. Here are some servers you may know.            
 
 For the following if you have a user account at CHPC or PHYSICS try doing them.
 one CHPC server:
@@ -93,37 +247,74 @@ physics.utah.edu
 * What command would you use to copy a directory (like "PathData") from "physics.utah.edu" if your username is "dave"?
 
 
-##############
-Advanced Level 
-##############
+* To connect to a server type `ssh <username>@<hostname>`, e.d. `ssh dsg@physics.utah.edu`. This creates a remote shell, just like the one we've been working on but on a remote computer.
+
+* When I've run `ssh dsg@physics.utah.edu` I should get:
+Typed ---> Result
+`whoami` --> "dsg"
+`hostname` --> "phyics.utah.edu" or "*.phyiscs.utah.edu" because there are several physics servers (e.g. fusion.phyiscs.utah.edu). You can connect to one directly using `ssh dsg@<hostname>`
+
+* `scp` works just like `cp` only you can add a remote location:
+Copy from remote:
+`scp dsg@physics.utah.edu:/home/grad/dsg/file_of_interest.txt ./`
+Copy to remote:
+`scp files_of_interest*.txt dsg@physics.utah.edu:/home/grad/dsg/`
 
 
-* How would you turn a directory "PathData" into a tarball (using pathdata.tar)?
-
-* How would you also compress the tarball? (think gzip/zip)
+* A command called `rsync` exists and allows you to sync entire directories with remote computers. 
 
 
-* Create a script which moves you to the home directory and execute.
 
-* Add the script to your $PATH so you can type it anywhere.
+>>>>>>>>>>>>>>>>>>>>> CHECK POINT <<<<<<<<<<<<<<<<<<<<<<<<<<
+You can connect to another server using `ssh` and you can copy files to and from using `scp`. You should know `rsync` exists if you want to use it.
+
+(NOTE: `sftp` combines both but I don't like the interface as well)
+                      
 
 
--- Create a file called "two_second_tom.sh" with:
-#!/bin/csh
+3.1 SCRIPTING AND RUNNING (chmod,screen)
+================================================== 
+
+You can create a script to run several commands (e.g. "RSG_2012/CommandLine/scripts/whereami").
+
+* Create a file called "two_second_tom" (using emacs or vi, ask for help if needed) which contains:
+#!/bin/sh
 while true
 do 
     echo "Hi, my name is Tom"
     sleep 2
 done
 
-* Run `screen` and execute the script "two_second_tom.sh". Then exit out of the screen. 
-Resume the screen to see that the command is still running. Kill the command with ctrl-k and exit the screen.
+* Try typing  `./two_second_tom`, what happens?
+
+* You probably need to modify the permissions of this file, add the ability to execute the file by typing `chmod +x two_second_tom`, now try `./two_second_tom` (use Ctrl-c to kill)
+
+* Type `screen` this creates a detached shell. Screen allows you to exit/logout of a computer while it's still running. Type `./two_second_tom` which starts running. Then type Ctrl-a Ctrl-d to detach (I always have to look these up on the internet, search 'linux screen command'). You should be able to type and do whatever.
+
+* Type `screen -ls` to see what screens are currently running. 
+
+* Type `screen -r` to resume. You should see two_second_tom still running. Type Ctrl-c to kill two_second_tom. Type `exit` to exit the current screen. Type `exit` again to close the shell.
 
 
-REMOTE SERVERS/FILE SYSTEMS
-===========================
+############################
+RANDOM TRICKS FOR ALL LEVELS
+############################
+
+* Ctrl-c : Kills a program, not allowing it to finish including any reading/writing of files or anything. Uses somewhat cautiously.
+
+* Ctrl-a : goes to the beginning of a line
+
+* Ctrl-e : goes to the end of a line
+
+* Ctrl-k : Deletes all characters to the right
+
+* Ctrl-z : Puts a current command to the background. `jobs` will show you if this has been done. `fg` will bring a command back to the foreground.
+
+* more Ctrl- commands exist, look them up with some free time.
+
+* An "&" puts a command in the background. e.g. `emacs file.txt &` and you can still use the current terminal `emacs file.txt` locks the terminal up. 
+
+* A ";" signifies a new line. So `cd ~;ls -a` is the same as typing `cd ~` then `ls -a`
 
 
-* How would you sync the directory "PathData" to your username at "physics.utah.edu" (if set up)? 
 
-* How would you exclude a directory called "LargeData" from syncing?
