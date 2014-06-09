@@ -1,7 +1,7 @@
 #!/bin/tcsh
 # Set custom PATHS, aliases, etc.
 
-echo "Thank you for opening a new terminal!"
+echo "`whoami`@`hostname`: Thanks for opening new terminal"
 
 # ---------------------------------------------------------------------------- #
 # Add to PATH - How you add more commands to the command line
@@ -20,7 +20,7 @@ setenv DEFAULT_LOCATION ${HOME}
 # ---------------------------------------------------------------------------- #
 # Move To Default location
 # ---------------------------------------------------------------------------- #
-if (${PWD} == ${HOME}'/Desktop') then 
+if (${PWD} == ${HOME}'/Desktop') then
     cd ${DEFAULT_LOCATION}
 endif
 
@@ -28,36 +28,54 @@ endif
 # Set PROMPT - modify the command prompt with colors
 # ---------------------------------------------------------------------------- #
 # source ~/.prompt_tcsh # Could put the this section into it's own script
-# 
+#
 # %/  shows entire path
 # %C shows relative directory
 # %~ current working directory replacing user's path with ~
 # for more see http://www.nparikh.org/unix/prompt.php
-set BLACK = "%b%{\033[30m%}"
-set BLUE  = "%b%{\033[34m%}"
-set GREEN  = "%b%{\033[32m%}"
-set CYAN  = "%b%{\033[36m%}"
-set RED  = "%b%{\033[31m%}"
-set MAGENTA  = "%b%{\033[35m%}"
-set PURPLE  = "%b%{\033[35m%}"
-set YELLOW  = "%b%{\033[33m%}"
-set LIGHT_GRAY  = "%%b{\033[37m%}"
-set BOLD_BLUE  = "%{\033[34m%}%B"
-set BOLD_GREEN  = "%{\033[32m%}%B"
-set BOLD_CYAN  = "%{\033[36m%}%B"
-set BOLD_RED  = "%{\033[31m%}%B"
-set BOLD_PURPLE  = "%{\033[35m%}%B"
-set BOLD_WHITE = "%{\033[37m%}%B"
-set WHITE = "%b%{\033[37m%}"
-set RESET  = "%b%{\033[m%}"
+#First number:
+# 0 - normal
+# 1 - bold
+# 2 - normal again
+# 3 - background color
+# 4 - underline the text
+# 5 - blinking
+# 
+# Foreground colours (3rd number):
+# 30 - black
+# 31 - brick red
+# 32 - green
+# 33 - yellow ochre
+# 34 - dark blue
+# 35 - magenta
+# 36 - cyan
+# 37 - white/gray
+set     BLACK="%{\033[0;30m%}"
+set      BLUE="%{\033[0;34m%}"
+set     GREEN="%{\033[0;32m%}"
+set      CYAN="%{\033[0;36m%}"
+set       RED="%{\033[0;31m%}"
+set   MAGENTA="%{\033[0;35m%}"
+set    YELLOW="%{\033[0;33m%}"
+set     WHITE="%{\033[0;37m%}"
+set BLINK_WHITE="%{\033[5;37m%}"
+set  BOLD_BLUE="%{\033[1;34m%}"
+set BOLD_GREEN="%{\033[1;32m%}"
+set  BOLD_CYAN="%{\033[1;36m%}"
+set   BOLD_RED="%{\033[1;31m%}"
+set      RESET="%{\033[0m%}"
 
-set prompt="${GREEN}[${BOLD_GREEN}%~${GREEN}\] ${LIGHT_GRAY}"
 
+# set prompt="\n%B%{\033[34m%}[%h] %d %D.%w.%Y %P\n%{\033[31m%}[%n][%m][%~]\n%{\033[30m%}%b"
+# NOTE: adding spaces in the will make this parse wrong 
+set prompt="${GREEN}[${BOLD_CYAN}%m:${BOLD_GREEN}%~${GREEN}]>${RESET} "
+
+setenv LS_COLORS 'pi=40;33:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.xbm=01;35:*.xpm=01;35:*.png=01;35:*.mng=01;35:*.tif=01;35:*.tiff=01;35:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.rar=01;31:*.bz2=01;31:*.bz=01;31:*.tz=01;31:*.rpm=01;31:*.deb=01;31:*.cpio=01;31:*.7z=01;31:*.svg=01;35:*.xcf=01;35'
 
 # ---------------------------------------------------------------------------- #
 # Modify Builtin Commands
 # ---------------------------------------------------------------------------- #
-alias ls 'ls -G' # enable colors
+alias ls 'ls -p' # add / to end of directories
 alias cp 'cp -i' # interactive, so you don't accidentally overwrite existing files
 alias mv 'mv -i'
 alias rm 'rm -i' # use rm -f if you want to force removal
@@ -71,6 +89,7 @@ alias remove 'rm -rf'
 alias lsl 'ls -haltr' #-halter  the `-e` is part of the `-l`
 alias lss 'ls -hsl'
 alias resource 'source ~/.tcshrc'
+alias beepoff 'set nobeep'
 
 # for finder
 # alias finder 'open .' # open current directory in finder on MacOSX
@@ -94,12 +113,18 @@ alias ipy 'ipython'
 
 # Text Editors
 alias em "emacs"
+alias ged 'gedit'
 
 
 # ---------------------------------------------------------------------------- #
 # Aliases for network connections
 # ---------------------------------------------------------------------------- #
-alias astro03 'ssh -Y u0565532@astro03.astro.utah.edu'
+alias astro01 ssh -X astro01.astro.utah.edu
+alias astro02 ssh -X astro02.astro.utah.edu
+alias a03 ssh -X astro03.astro.utah.edu
+alias gv evince
+alias acroread evince
+
 # also check out ~/.ssh/config
 
 # reconnecting to the UConnect WiFi
@@ -107,7 +132,6 @@ alias astro03 'ssh -Y u0565532@astro03.astro.utah.edu'
 
 # for syncing astronomy directories
 # alias astrosync "/Applications/astro/rsync_script.py"
-
 
 # ---------------------------------------------------------------------------- #
 # Research Specific Aliases
@@ -120,4 +144,3 @@ alias y 'echo YES!'
 alias n 'echo NO!'
 alias textwars 'telnet towel.blinkenlights.nl'
 alias matrix 'LC_ALL=C tr -c "[:digit:]" " " < /dev/urandom | dd cbs=$COLUMNS conv=unblock | GREP_COLOR="1;32" grep --color "[^ ]"'
-

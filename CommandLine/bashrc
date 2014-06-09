@@ -1,7 +1,7 @@
 #!/bin/bash
 #Set custom PATHS, aliases, etc.
 
-echo "Thank you for opening a new terminal!"
+echo "`whoami`@`hostname`: Thank you for opening a new terminal!"
 
 # ---------------------------------------------------------------------------- #
 # Add to PATH - How you add more commands to the command line
@@ -43,7 +43,6 @@ fi
 # Set terminal title
 # PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 PROMPT_COMMAND='echo -ne "\033]0; ${HOSTNAME}:${PWD}\007"'
-PROMPT_COMMAND='echo -ne "\033]0;${HOSTNAME}\007"'
 
 # Set command prompt
 # For full list, "man bash" and search to 2nd "PROMPTING" or see:
@@ -69,7 +68,7 @@ BOLD_RED="\[\033[1;31m\]"
 BOLD_PURPLE="\[\033[1;35m\]"
 YELLOW="\[\033[1;33m\]"
 WHITE="\[\033[1;37m\]"
-RESET="\[\033[m\]
+RESET="\[\033[m\]"
 
 # set the primary prompt
 export PS1="$BOLD_GREEN[\W]$GREEN$ $RESET"
@@ -94,16 +93,17 @@ alias du='du -csh'
 # Connivence Aliases
 # ---------------------------------------------------------------------------- #
 alias remove='rm -rf'
-alias lsl='ls -haltr' #-halter  the `-e` is part of the `-l`
+alias lsl='ls -haltr' #-halter  the "-e" is part of the "-l"
 alias lss='ls -hsl'
 alias resource='source ~/.bashrc'
+
 
 # for finder
 # alias finder='open .' # open current directory in finder on MacOSX
 # show/hide hidded files in finder
 
 # for information about chmod
-alias chmodinfo='echo -e "chmod information:\n 7 = full (111) \n 6 = read/write (110)\n 5 = read/exec (101)\n 4 = read (100)\n 3 = write/exec (011)\n 2 = write (010)\n 1 = exec (001)\n 0 = none (000)\n \n SHELL$ chmod 754 foo.txt\n  ^= gives user (u) full, group (g) read/exec,  and  others (o) read only"'
+alias chmodinfo='echo "chmod information:\n 7 = full (111) \n 6 = read/write (110)\n 5 = read/exec (101)\n 4 = read (100)\n 3 = write/exec (011)\n 2 = write (010)\n 1 = exec (001)\n 0 = none (000)\n \n SHELL$ chmod 754 foo.txt\n  = gives user (u) full, group (g) read/exec,  and  others (o) read only"'
 
 # Location Shortcuts
 #alias cda="cd ${ASTROHOME}"
