@@ -103,7 +103,7 @@ alias resource='source ~/.bashrc'
 # show/hide hidded files in finder
 
 # for information about chmod
-alias chmodinfo='echo "chmod information:\n 7 = full (111) \n 6 = read/write (110)\n 5 = read/exec (101)\n 4 = read (100)\n 3 = write/exec (011)\n 2 = write (010)\n 1 = exec (001)\n 0 = none (000)\n \n SHELL$ chmod 754 foo.txt\n  = gives user (u) full, group (g) read/exec,  and  others (o) read only"'
+alias chmodinfo='echo -e "chmod information:\n 7 = full (111) \n 6 = read/write (110)\n 5 = read/exec (101)\n 4 = read (100)\n 3 = write/exec (011)\n 2 = write (010)\n 1 = exec (001)\n 0 = none (000)\n \n SHELL$ chmod 754 foo.txt\n  = gives user (u) full, group (g) read/exec,  and  others (o) read only"'
 
 # Location Shortcuts
 #alias cda="cd ${ASTROHOME}"

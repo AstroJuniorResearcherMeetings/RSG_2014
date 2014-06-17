@@ -67,7 +67,7 @@ These are designed to help you figure out where you are.
 
 * Type `less NewDirectory/newnew_file.txt`. What does it say?
 
-* Copy all the text files into NewDirectory by typing `ls *.txt NewDirectory/`. Confirm with `ls` that they are indeed there.
+* Copy all the text files into NewDirectory by typing `cp *.txt NewDirectory/`. Confirm with `ls` that they are indeed there.
 
 * Try to copy the directory with `cp NewDirectory NewNewDirectory`. What error do you get? Type `man cp`, look for the `-r` flag. Now modify the command to actually copy the directory. 
 
@@ -121,7 +121,7 @@ https://github.com/AstroJuniorResearcherMeetings/RSG_2014
 
 * Type `gunzip sandbox.tar.gz` to decompress (aka unzip) the file (gzip/zip and gunzip/unzip are practically the same). Then the file should be a tarball "sandbox.tar", unpack that using `tar -xvf sandbox.tar` (-xvf is something to memorize or alias for unpacking. Incidentally, -cvf creates a tarball)
 
-2.1 NAVIGATION + SEARCHING (find,grep,std redirection)
+2.1 NAVIGATION + SEARCHING (find,grep, std redirection)
 =====================================================
 
 * Type `find . -name "*.txt"` to search for all files ending in ".txt". 
