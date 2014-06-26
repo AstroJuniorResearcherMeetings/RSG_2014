@@ -33,7 +33,7 @@ Start Baking {
     tsp vanilla = 1
 
     # parameters of our pan
-    float pan_temp=0
+    float pan_temp=0.0
 
     # directions:
     cup dry_ingredients = mix_ingredients(flour,sugar,salt,baking_powder)
@@ -45,7 +45,7 @@ Start Baking {
          pan_temp += 10*random # increasing by ~10 degrees every time step
          wait 10 seconds
 
-    cup amount_for_pancake = 10
+    cup amount_for_pancake = 1
     cup pancake = 0
     dynamicArray cooked_pancakes
 
@@ -62,8 +62,9 @@ Start Baking {
         # keep track of total amount left
         ingredients -= amount_for_pancake
 
+        pancake_to_pan(pancake,pan_temp)
         while (n_bubbles < 0){         
-        wait 10 seconds
+            wait 10 seconds
         }
 
         flip_pancake(pancake)

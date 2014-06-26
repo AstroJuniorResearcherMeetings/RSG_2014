@@ -1,0 +1,19 @@
+
+(*) http://www.eskimo.com/~scs/cclass/progintro/sx4.html 
+This site is not pretty but it's concise and states concepts well
+
+(*) http://howtoprogramwithjava.com/the-5-basic-concepts-of-any-programming-language-concept-3/
+This site has nice, brief overviews of the basic concepts
+Probably the most valuable
+
+(*) http://www.sitepoint.com/typing-versus-dynamic-typing/
+Nice intro to dynamic vs static languages
+
+(*) http://en.wikibooks.org/wiki/C_Programming/Control
+Details about control structures (with C examples)
+
+(*) http://www.cs.utah.edu/~germain/PPS/Topics
+This is a mixed bag of useful and not useful stuff. The not useful stuff is only because it's outside the scope of the discussion. Really good resource.
+
+(*) http://rosettacode.org/wiki/Category:Programming_Tasks
+Compare programming languages by programming task
