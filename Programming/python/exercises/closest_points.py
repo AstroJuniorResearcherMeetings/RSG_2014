@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # PURPOSE: Create a function which finds the closest distance between two points
 # AUTHOR: dylangregersen
@@ -7,6 +8,7 @@
 # ########################################################################### #
 
 # import modules
+from __future__ import print_function, division
 import time
 import random
 

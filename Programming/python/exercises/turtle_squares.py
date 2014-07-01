@@ -8,7 +8,7 @@
 # ########################################################################### #
 
 # import modules 
-
+from __future__ import print_function, division
 import random
 from turtle import Turtle
 
