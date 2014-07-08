@@ -73,10 +73,8 @@ def linear_fit (xpts,ypts):
     """
     # TODO: use scipy.optimize.fmin to find the minimum parameters using
     #       the error_function
-    #       
-    # NOTE: when you specify starting parameters, add those as optional inputs for
-    #       linear_fit function
-    return (1,0)
+            
+    return (3,2)
 
 def plot_results (xpts,ypts,best_params):
     """ Creates a plot of showing the result
@@ -92,42 +90,42 @@ def plot_results (xpts,ypts,best_params):
     ax.scatter(xpts,ypts,color='b',label="data")    
     
     yfit = linear_model(best_params,xpts)
-    # TODO: add fits points to plot
+    
+    # TODO: add fits points to plot, one line similar to adding the data above
     
     ax.set_title("best fit params {}".format(best_params))
 
-    # TODO: add legend to plot
-
-    plt.show()
+    # TODO: add legend to plot, look at plt.legend
     
     # TODO: save plot to file using `fig.savefig`    
-
+    plt.show()
 
 pass 
 # ########################################################################### #
-if __name__ == "__main__":
-    np.random.seed(42) # fixes all the random numbers
-    
-    # correct parameters
-    m = 3.00
-    b = 2.15
-    
-    # get data    
-    xpts = np.linspace(-10,10,1000)
-    ypts = linear_model((m,b),xpts)
-    ypts += np.random.normal(0,0.7,len(x))
 
+np.random.seed(42) # fixes all the random numbers
 
-    # Find minimum fit
-    best_params = linear_fit(xpts,ypts)
-    
-    # TODO: print to screen the best parameters and the correct parameters. How
-    # close are they?
-    
-    # visualize the results
-    plot_result(xpts,ypts,best_params)
+# correct parameters
+m = 3.00
+b = 2.15
+
+# get data    
+xpts = np.linspace(-10,10,1000)
+ypts = linear_model((m,b),xpts)
+ypts += np.random.normal(0,0.7,len(xpts))
+
+# Find minimum fit
+best_params = linear_fit(xpts,ypts)
+
+# TODO: print to screen the best parameters and the correct parameters. How
+# close are they?
+
+# visualize the results
+plot_results(xpts,ypts,best_params)
       
 # CHALLENGES :
+#  * Add a parameter to the function `linear_fit` which gives the starting
+#    value for scipy.optimize.fmin
 #  * add another subplot to the figure which shows the residuals (yfit-ypts)
 #  * Change this from a linear fit to a 2nd degree polynomial fit params = (c0,c1,c2) 
 #  * How would you incorporate erros in y points 

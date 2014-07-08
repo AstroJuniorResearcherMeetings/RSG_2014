@@ -10,8 +10,13 @@
 # import modules 
 from __future__ import print_function, division
 import random
-from turtle import Turtle
-
+try:
+    from turtle import Turtle
+except ImportError as e:
+    print(("Tried to import but failed. Need to check that the library `turtle` "
+            "installed and working"))
+    print(e)
+    
 # ########################################################################### #
 
 # ======================= Methods for using turtle to draw
@@ -45,34 +50,31 @@ def move (turtle,x,y):
 
 
 # ########################################################################### #
-if __name__ == "__main__":
-    # create the turtle object
-    turtle = Turtle()  
+
+
+# ======================= create the turtle objects
+turtle = Turtle()  
+
+# ======================= define a list of colors  
+colors = ["red","black","green","blue","purple","orange","brown","maroon"] 
+
+# ======================= get the screen and modify properties
+screen = turtle.screen
+screen.bgcolor(0.9,0.9,0.9) # r,g,b
+screen.title("Smile!")
+size = screen.screensize()
+
+# ======================= Create a rectangle
+
+# TODO : implement functions and variables which a series of enclosing draw rectangles
     
-    # define a list of colors  
-    colors = ["red","black","green","blue","purple","orange","brown","maroon"] 
-    
-    # get the screen and modify properties
-    screen = turtle.screen
-    screen.bgcolor(0.9,0.9,0.9) # r,g,b
-    screen.title("Smile!")
-    size = screen.screensize()
-    
-    # TODO : implement functions and variables which a series of enclosing draw rectangles
-        
     # draw a rectangle
     #   define a start x,y
-    #   move the cursor (turtle) to that point
-    #   move the cursor to every corner of the rectangle in turn
+    #   move the cursor (turtle) to that point, move(turtle,x,y)
+    #   draw with the cursor to every corner. turtle.goto(x+?,y+?)
     
-    # for every x starting point
-    #    decide every y starting point
-    #    pick a color
-    #    draw a rectangle starting there
-    #
-    
-    move(turtle,-250,-250)
-    turtle.write("Always Look on the bright side of life",,move=True,font=('Arial',30))
+move(turtle,-250,-250)
+turtle.write("Always Look on the bright side of life",move=True,font=('Arial',30))
     
 # CHALLENGES:
 #  * have the colors chosen randomly

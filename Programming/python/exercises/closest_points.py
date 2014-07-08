@@ -1,21 +1,32 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+PURPOSE: Create a function which finds the closest distance between two points
+AUTHOR: dylangregersen
+DATE: Tue Jul  8 13:51:49 MDT 2014
 
-# PURPOSE: Create a function which finds the closest distance between two points
-# AUTHOR: dylangregersen
-# DATE: Thu Jun 26 12:39:01 2014
 
+To execute this script:
+* Method 1 : from command line
+
+    python closest_points.py
+
+* Method 2 : 
+    
+    python
+    
+    >>> execfile("closest_points.py")
+    
+"""
 # ########################################################################### #
 
 # import modules
 from __future__ import print_function, division
-import time
-import random
 
 # ########################################################################### #
 
 # =======================  define a function for finding the closest points
-def find_closet_index (pts1,pts2):
+def find_closest_distance (pts1,pts2):
     """ Finds the index of the two values which are closest
     
     Parameters
@@ -25,37 +36,35 @@ def find_closet_index (pts1,pts2):
     
     Returns
     -------
-    index1 : integer
-        index of the closest point in pts1
-    index2 : integer
-        index of the closest point in pts2
+    min_dist : float
+        minimum distance between points in pts1 and pts2
     
     """
-    index1,index2 = 0,0
     
-    # TODO: implement a method to find the closest value
-    
-    return index1,index2
+    # TODO: (3) Take the todo (1) and paste it here to use as a function
+    # and return the minimum distance
+    return 
     
 # ======================= create some fake data
+pts1 = [10.0, 11.0, 13.1, 5.0, 1.1, -10.2]
+pts2 = [30.0,  5.1, 20.3, 3.2, -1.2]
 
-# TODO: define variable num_pts as an integer
+# ======================= Find minimum distance
 
-pts1 = []
-pts2 = []
-for i in range(num_pts):
-    r = random.random()*num_pts
-    pts1.append(r)    
-    pts2.append(random.random()*num_pts)
+dist = pts1[0] - pts2[0]
 
-# ======================= Use function to find the closest points
-index1,index2 = find_closets_index(pts1,pts2)
+# TODO: (1) implement a method which calculates the distance bewteen every pair
+# of points between pts1 and pts2 and finds the minimum
 
-# TODO : print out the result
+# ======================= Display the result
 
+# TODO : (2) print out the result
 
 # ======================= CHALLENGES : 
-#    * Create a function which returns the value of the closest point in pts1
-#    * Create a function to find the points furthest apart
+#    * Create a function which returns the distance between two points in arrays lists
+#    * Re-write so that it returns the furthest distance between the two arrays
+
+# ======================= UBER-CHALLENGES : 
+#    * Create the function so that it returns the index of both pts1 and pts2 
+#      where the points are the closest
 #    * Create a function which returns the 5 (or #) closest numbers
-#    * Change this code to use the library NumPy

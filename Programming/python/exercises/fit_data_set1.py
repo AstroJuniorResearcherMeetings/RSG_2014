@@ -30,7 +30,8 @@ def model (params,xpts):
     yfit : np.ndarray
     
     """
-    # TODO: put in best idea of a functional form for the data
+    # TODO: put in best idea of a functional form for the data,
+    # To figure this you you may first want to plot the data
     return 
     
 def error_function (params,model_func,xpts,ypts):
@@ -71,7 +72,7 @@ def fit_model_to_data (xpts,ypts,params0,model_func=model):
     params : (float,float)
         The best fit (m,b) values 
         
-    """
+    """    
     # TODO: use scipy.optimize.fmin to find the minimum parameters using
     #       the error_function
     #       
@@ -109,5 +110,5 @@ if __name__ == "__main__":
     best_params = fit_model_to_data (xpts,ypts,params0,model_func=model)
     
     # visualize the results
-    plot_results(xpts,ypts,params,model)
+    plot_results(xpts,ypts,best_params,model)
 
