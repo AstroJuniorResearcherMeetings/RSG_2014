@@ -1,17 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""
+PURPOSE: Use the python package turtle to draw rectangles
+AUTHOR: dylangregersen
+DATE: Thu Jun 26 10:07:40 2014
 
-# PURPOSE: Use the python package turtle to draw rectangles
-# AUTHOR: dylangregersen
-# DATE: Thu Jun 26 10:07:40 2014
+To execute this file in Spyder, go to Run > Configure. In the configure window click "Execute in new dedicated Python interpreter". Then you can click the run button to execute the code
 
+To execute this file on the command line, go the the directory with this file and type:
+python turtle_squares.py
+
+"""
 # ########################################################################### #
 
 # import modules 
 from __future__ import print_function, division
 import random
+import time
 try:
-    from turtle import Turtle
+    import turtle
 except ImportError as e:
     print(("Tried to import but failed. Need to check that the library `turtle` "
             "installed and working"))
@@ -23,7 +30,7 @@ except ImportError as e:
 # These should be all you need
 
 # move the cursor (turtle) without drawing
-def move (turtle,x,y):
+def move (t,x,y):
     """ Moves the turtle position without drawing
     
     Parameters
@@ -33,18 +40,18 @@ def move (turtle,x,y):
     y : float    
     
     """
-    turtle.penup()
-    turtle.goto(x,y)
-    turtle.pendown()
+    t.penup()
+    t.goto(x,y)
+    t.pendown()
 
 # move the cursor while drawing
-# turtle.goto(100,100)
+# t.goto(100,100)
 
 # set color
-# turtle.color("red")
+# t.color("red")
 
 # get color
-# color = turtle.color()
+# color = t.color()
 
 # ======================= Functions
 
@@ -53,31 +60,35 @@ def move (turtle,x,y):
 
 
 # ======================= create the turtle objects
-turtle = Turtle()  
+t = turtle.Turtle()  
 
 # ======================= define a list of colors  
 colors = ["red","black","green","blue","purple","orange","brown","maroon"] 
 
 # ======================= get the screen and modify properties
-screen = turtle.screen
+screen = t.screen
 screen.bgcolor(0.9,0.9,0.9) # r,g,b
 screen.title("Smile!")
+# This accesses the hidden variable _root, inorder to make the screen appear infront of all others
+screen._root.attributes("-topmost",True) 
 size = screen.screensize()
 
 # ======================= Create a rectangle
 
 # TODO : implement functions and variables which a series of enclosing draw rectangles
     
+
     # draw a rectangle
     #   define a start x,y
-    #   move the cursor (turtle) to that point, move(turtle,x,y)
-    #   draw with the cursor to every corner. turtle.goto(x+?,y+?)
+    #   move the cursor (t) to that point, move(t,x,y)
+    #   draw with the cursor to every corner. t.goto(x+?,y+?)
     
-move(turtle,-250,-250)
-turtle.write("Always Look on the bright side of life",move=True,font=('Arial',30))
+move(t,-250,-250)
+t.write("Always look on the bright side of life!",move=True,font=('Arial',30))
     
 # CHALLENGES:
 #  * have the colors chosen randomly
 #  * Manipulate the spacing of the rectangles
 #  * Manipulate the width and height every time
 
+turtle.done()
