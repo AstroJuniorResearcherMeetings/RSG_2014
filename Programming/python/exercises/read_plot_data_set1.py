@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-PURPOSE:
+PURPOSE: Reading and plotting simple ascii data 
 AUTHOR: dylangregersen
 DATE: Tue Jul  8 13:59:37 2014
 """
@@ -11,7 +11,7 @@ DATE: Tue Jul  8 13:59:37 2014
 
 from __future__ import print_function, division
 import numpy as np
-import pylab as plt
+import matplotlib.pylab as plt
 
 # ########################################################################### #
 
@@ -54,7 +54,7 @@ def read_data_set1 (filepath):
         # store the data
         xpts.append(float(x))
         ypts.append(float(y))
-
+    
     # convert from lists to arrays
     xpts = np.array(xpts)
     ypts = np.array(ypts)
@@ -66,13 +66,15 @@ def read_data_set1 (filepath):
 # ======================= get data    
 xpts,ypts = np.genfromtxt("../example_data/data_set1.txt",usecols=[0,1],unpack=True)
 
-# TODO: use my function to read in the data instead of genfromtxt
+# TODO: use the read function to read in the data instead of genfromtxt
 
 # ======================= create a mask for the data
 
 mask = (xpts > 0)
 
 # TODO: what is mask? take a look. Do you understand?
+
+# TODO: create a mask for all the points greater than 5 and less than -5
 
 # ======================= Plot the result
 
@@ -97,13 +99,15 @@ ax.set_xlabel("Time")
 # add legend, if you have labels on your data points
 # plt.legend()
 
+# TODO: add a horizontal line where 0 is
+
 # show the plot
 plt.show()
 
 # TODO: with the plot open try zooming and panning
 
 # TODO: check out http://matplotlib.org/gallery.html, look at the plots and their
-#   source code and try out one or two alternatives
+#   source code and try out one or two tricks you find there
 
 # ======================= Challenges
 # *  change the mask to be mask all data points for -5 < xpts < 5
