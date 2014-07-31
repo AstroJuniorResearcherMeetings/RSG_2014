@@ -74,7 +74,7 @@ mask = (xpts > 0)
 
 # TODO: what is mask? take a look. Do you understand?
 
-# TODO: create a mask for all the points greater than 5 and less than -5
+# TODO: create a mask for all the points greater than 5 or less than -5
 
 # ======================= Plot the result
 
